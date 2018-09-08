@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<header>
+	<!-- Remember to add your JS file and your starting function in the setonload call back -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2013.01/jquery.SPServices-2013.01.min.js"
+	type="text/javascript"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+	crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.bundle.min.js" integrity="sha384-CS0nxkpPy+xUkNGhObAISrkg/xjb3USVCwy+0/NMzd5VxgY4CMCyTkItmy5n0voC"
+	crossorigin="anonymous"></script>
+	<script type="text/javascript" src="UnitConverter.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['gauge']});
+		google.charts.load('current', {packages: ['corechart']});
+	    google.charts.setOnLoadCallback();
+	</script>
+</header>
+<style>
+	.shadowboxyes{
+	box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19);
+	
+	}
+</style>
+<body>
+	
+	<div class="shadowboxyes" id="border" style="background-color:white; overflow:hidden; width:775px; height:775px; margin: 30px auto;">
+		<!-- End of the navbar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="https://powergridlt.azurewebsites.net">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/unitconverter/UnitConverter.HTML">Unit Converter</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Dropdown</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Disabled</a>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
+		</nav>
+		<!-- End of the navbar -->
+		<!-- This is the Start of the Heading -->
+		<div style="box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19); background:LightGray;">
+			<h2 style="padding: 5px 5px 5px 5px;">Unit Converter</h2>
+		</div>
+		<!-- This is the End of the Heading -->
+		<div style="padding:10px 10px 10px 10px; margin: 10px 10px 10px 10px; box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19); ">
+			<ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-bottom: 10px;">
+				<li class="nav-item">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Length</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="Area-tab" data-toggle="tab" href="#Area" role="tab" aria-controls="Area" Area-selected="false">Area</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="Speed-tab" data-toggle="tab" href="#Speed" role="tab" aria-controls="Speed" aria-selected="false">Speed & Time</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="Weight-tab" data-toggle="tab" href="#Weight" role="tab" aria-controls="Weight" aria-selected="false">Weight</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="hello-tab" data-toggle="tab" href="#hello" role="tab" aria-controls="hello" aria-selected="false">API, SG and Inventories</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				
+				<!-- Start of the length input and Data -->
+				
+				<div id="home" class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<button id="buttonConverter" type="button" class="btn btn-outline-secondary">Meter</button>
+							<button style="min-width: 0;" type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu">
+								<a id="ConverterM" class="dropdown-item" href="#">Meter</a>
+								<a id="ConverterI" class="dropdown-item" href="#">Inch</a>
+								<a id="ConverterF" class="dropdown-item" href="#">Foot</a>
+								<a id="ConverterY" class="dropdown-item" href="#">Yard</a>
+								<a id="ConverterK" class="dropdown-item" href="#">Kilometer</a>
+								<a id="ConverterMi" class="dropdown-item" href="#">Mile</a>
+								<a id="ConverterNm" class="dropdown-item" href="#">Nautical Mile</a>
+								<div role="separator" class="dropdown-divider"></div>
+							</div>
+						</div>
+						<input id="ConverterInput" type="text" class="form-control" placeholder="1" aria-label="Text input with segmented dropdown button">
+					</div>
+					<button id="ConverterGo" type="button" class="btn btn-primary">Go</button>
+					<div Style="margin:10px 10px 10px 10px;" id="ConData"></div>
+				</div>
+				
+				<!-- End of the length input and Data -->
+				
+				
+				
+				<!-- Start of the Area input and Data -->
+				
+				<div id="Area" class="tab-pane fade" role="tabpanel" aria-labelledby="Area-tab">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<button id="buttonConverter2" type="button" class="btn btn-outline-secondary">Meter
+								<sup>2</sup>
+							</button>
+							<button style="min-width: 0;" type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu">
+								<a id="ConverterM2" class="dropdown-item" href="#">Meter<sup>2</sup></a>
+								<a id="ConverterI2" class="dropdown-item" href="#">Inch<sup>2</sup</a>
+								<a id="ConverterF2" class="dropdown-item" href="#">Foot<sup>2</sup</a>
+								<a id="ConverterY2" class="dropdown-item" href="#">Yard<sup>2</sup</a>
+								<a id="ConverterK2" class="dropdown-item" href="#">Kilometer<sup>2</sup</a>
+								<a id="ConverterMi2" class="dropdown-item" href="#">Mile<sup>2</sup</a>
+								<a id="ConverterNm2" class="dropdown-item" href="#">Nautical Mile<sup>2</sup></a>
+								<div role="separator" class="dropdown-divider"></div>
+							</div>
+						</div>
+						<input id="ConverterInput2" type="text" class="form-control" placeholder="1" aria-label="Text input with segmented dropdown button">
+					</div>
+					<button id="ConverterGo2" type="button" class="btn btn-primary">Go</button>
+					<div Style="margin:10px 10px 10px 10px;" id="ConData2"></div>
+				</div>
+				
+				<!-- End of the Area input and Data -->
+				
+				<!-- Start of the Speed input and Data -->
+				
+				<div id="Speed" class="tab-pane fade" role="tabpanel" aria-labelledby="Speed-tab">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<button id="buttonConverter3" type="button" class="btn btn-outline-secondary">KPH</button>
+							<button style="min-width: 0;" type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu">
+								<a id="ConverterM3" class="dropdown-item" href="#">Meter<sup>2</sup></a>
+								<a id="ConverterI3" class="dropdown-item" href="#">Inch<sup>2</sup</a>
+								<a id="ConverterF3" class="dropdown-item" href="#">Foot<sup>2</sup</a>
+								<a id="ConverterY3" class="dropdown-item" href="#">Yard<sup>2</sup</a>
+								<a id="ConverterK3" class="dropdown-item" href="#">Kilometer<sup>2</sup</a>
+								<a id="ConverterMi3" class="dropdown-item" href="#">Mile<sup>2</sup</a>
+								<a id="ConverterNm3" class="dropdown-item" href="#">Nautical Mile<sup>2</sup></a>
+								<div role="separator" class="dropdown-divider"></div>
+							</div>
+						</div>
+						<input id="ConverterInput3" type="text" class="form-control" placeholder="1" aria-label="Text input with segmented dropdown button">
+					</div>
+					<button id="ConverterGo3" type="button" class="btn btn-primary">Go</button>
+					<div Style="margin:10px 10px 10px 10px;" id="ConData3"></div>
+				</div>
+				
+				<!-- End of the Area input and Data -->
+				
+				<!-- Start of the Weight input and Data -->
+				
+				<div id="Weight" class="tab-pane fade" role="tabpanel" aria-labelledby="Weight-tab">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<button id="buttonConverter4" type="button" class="btn btn-outline-secondary">Milligram</button>
+							<button style="min-width: 0;" type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu">
+								<a id="ConverterMG" class="dropdown-item" href="#">Milligram</a>
+								<a id="ConverterG" class="dropdown-item" href="#">Gram</a>
+								<a id="ConverterKG" class="dropdown-item" href="#">Kilogram</a>
+								<a id="ConverterMT" class="dropdown-item" href="#">Metric Tonne</a>
+								<a id="ConverterO" class="dropdown-item" href="#">ounce</a>
+								<a id="ConverterP" class="dropdown-item" href="#">pounds</a>
+								<a id="ConverterS" class="dropdown-item" href="#">Stones</a>
+								<a id="ConverterUST" class="dropdown-item" href="#">US Ton</a>
+								<a id="ConverterIT" class="dropdown-item" href="#">Imperial Ton</a>
+								<div role="separator" class="dropdown-divider"></div>
+							</div>
+						</div>
+						<input id="ConverterInput4" type="text" class="form-control" placeholder="1" aria-label="Text input with segmented dropdown button">
+					</div>
+					<button id="ConverterGo4" type="button" class="btn btn-primary">Go</button>
+					<div Style="margin:10px 10px 10px 10px;" id="ConData4"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<footer>
+	<Script>
+</Script>
